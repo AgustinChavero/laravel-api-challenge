@@ -1,0 +1,39 @@
+version: "3.1"
+
+networks:
+    default-network:
+
+services:
+    apiblog:
+        image: nanoninja/php-fpm:8.1
+        depends_on:
+            - api-twitter
+        ports:
+            - 8000:8000
+        volumes:
+            - ./:/var/www/html
+            - ./vendor/laravel/sail/runtimes/8.1/php.ini:/usr/local/etc/php/php.ini
+        command: php -S="0.0.0.0:8000" -t="/var/www/html/public"
+        networks:
+            - default-network
+
+    api-twitter:
+        container_name: api-twitter
+        hostname: api-twitter
+        image: mysql:latest
+        restart: always
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: twitterdatabase
+            MYSQL_USER: rootuser
+            MYSQL_PASSWORD: password
+        volumes:
+            - mydata:/var/lib/mysql
+        networks:
+            - default-network
+
+volumes:
+    mydata:
+        driver: local
