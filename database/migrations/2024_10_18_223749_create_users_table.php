@@ -14,6 +14,7 @@ return new class () extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('language_id');
 
             $table->string('name');
             $table->string('lastname');
@@ -31,6 +32,7 @@ return new class () extends Migration {
             $table->softDeletes();
 
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

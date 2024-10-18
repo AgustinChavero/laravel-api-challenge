@@ -12,7 +12,7 @@ return new class () extends Migration {
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('appointment_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('status_id');
 
             $table->string('transfer_id')->unique()->nullable();
@@ -20,7 +20,7 @@ return new class () extends Migration {
 
             $table->timestamps();
 
-            $table->foreign('appointment_id')->references('id')->on('appointments')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('status_id')->references('id')->on('payment_statuses')->onDelete('cascade');
         });
     }
