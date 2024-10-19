@@ -2,7 +2,11 @@
 
 <p align="center">
 
-## About the Project
+<p align="center">
+  A simplified Twitter-like API built with Laravel.
+</p>
+
+## 📝 About the Project
 
 This project is an API that replicates some of the internal functionalities of Twitter in a simplified manner. The API allows users to perform actions such as:
 
@@ -13,7 +17,7 @@ This project is an API that replicates some of the internal functionalities of T
 -   Follow other users.
 -   Check account statistics such as follower count, following count, and number of tweets posted.
 
-### Features
+### 🚀 Features
 
 -   **User Management**: Registration, login, profiles, and followers.
 -   **Tweets**: Creation, editing, deletion, and viewing of tweets.
@@ -21,9 +25,53 @@ This project is an API that replicates some of the internal functionalities of T
 -   **Statistics**: Followers, following, and tweet counts.
 -   **User Following**: Follow and unfollow other users.
 
-## API Documentation
+### 📚 API Documentation
 
 The complete API documentation is available in the `/docs` folder, detailing the usage of each endpoint, accepted parameters, and response examples.
+
+## 💻 Getting Started
+
+To set up and run the project on your local machine, follow the steps below.
+
+### Prerequisites
+
+Ensure you have Composer, Docker and Docker Compose installed on your machine.
+
+### Installation
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/AgustinChavero/laravel-api-challenge.git
+    cd laravel-api-challenge
+    ```
+2. **Create the Docker network**:
+    ```
+    docker network create post-network
+    ```
+3. **Start the containers**:
+    ```
+    docker-compose up -d
+    ```
+4. **Check the running containers**:
+    ```
+    docker ps
+    ```
+5. **Access the PHP container**:
+    ```
+    docker exec -it <container_id_php> bash
+    ```
+6. **Update the .env file**:
+    ```
+    sed -i 's/^DB_HOST=.*/DB_HOST=dbposts/' .env
+    ```
+7. **Clear the config cache**:
+    ```
+    php artisan config:cache
+    ```
+8. **Run database migrations**:
+    ```
+    php artisan migrate
+    ```
 
 ## Suggestions and Support
 
