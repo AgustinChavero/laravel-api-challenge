@@ -25,6 +25,7 @@ class User extends Authenticatable
         'password',
         'birth_date',
         'role_id',
+        'language_id'
     ];
 
     protected $hidden = [
