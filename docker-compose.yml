@@ -4,10 +4,10 @@ networks:
     default-network:
 
 services:
-    apiblog:
+    apiposts:
         image: nanoninja/php-fpm:8.1
         depends_on:
-            - api-twitter
+            - dbposts
         ports:
             - 8000:8000
         volumes:
@@ -17,16 +17,16 @@ services:
         networks:
             - default-network
 
-    api-twitter:
-        container_name: api-twitter
-        hostname: api-twitter
+    dbposts:
+        container_name: dbposts
+        hostname: dbposts
         image: mysql:latest
         restart: always
         ports:
             - "3306:3306"
         environment:
             MYSQL_ROOT_PASSWORD: password
-            MYSQL_DATABASE: twitterdatabase
+            MYSQL_DATABASE: postdatabase
             MYSQL_USER: rootuser
             MYSQL_PASSWORD: password
         volumes:
