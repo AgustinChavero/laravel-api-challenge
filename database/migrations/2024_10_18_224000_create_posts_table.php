@@ -15,7 +15,6 @@ return new class () extends Migration {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
 
-            $table->boolean('enabled')->default(true);
             $table->text('photo')->nullable();
 
             $table->text('content');
