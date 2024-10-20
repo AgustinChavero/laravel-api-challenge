@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'password' => bcrypt('password'),
             'birth_date' => $this->faker->date('Y-m-d', '2005-12-31'),
             'role_id' => Role::factory(),
-            'language_id' => Language::factory(),
+            'language_id' => 1,
             'remember_token' => Str::random(10),
         ];
     }
@@ -30,7 +30,7 @@ class UserFactory extends Factory
     public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [
-            'email_verified_at' => now(),
+            'email_verified_at' => null,
         ]);
     }
 }
