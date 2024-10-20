@@ -68,9 +68,21 @@ Ensure you have Composer, Docker and Docker Compose installed on your machine.
     ```
     php artisan config:cache
     ```
-8. **Run database migrations**:
+8. **Search Docker ID**:
     ```
-    php artisan migrate
+    docker ps
+    ```
+9. **Run database migrations**:
+    ```
+    docker exec -it <container_id_php> php artisan migrate
+    ```
+10. **Run database seeders**:
+    ```
+    docker exec -it <container_id_php> php artisan db:seed
+    ```
+11. **Run tests**:
+    ```
+    docker exec -it <container_id_php> php artisan test
     ```
 
 ## Suggestions and Support
