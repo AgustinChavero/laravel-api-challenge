@@ -14,7 +14,9 @@ return new class () extends Migration {
             $table->id();
 
             $table->string('name', 200);
-            $table->integer('code')->unique();
+            $table->string('code')->unique();
+
+            $table->timestamps();
         });
     }
 
