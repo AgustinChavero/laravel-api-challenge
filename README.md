@@ -10,10 +10,10 @@
 
 This project is an API that replicates some of the internal functionalities of Twitter in a simplified manner. The API allows users to perform actions such as:
 
--   Post tweets with text.
--   Like tweets.
--   Save tweets.
--   Share tweets.
+-   Post with text.
+-   Likes.
+-   Saves.
+-   Shares.
 -   Follow other users.
 -   Check account statistics such as follower count, following count, and number of tweets posted.
 
@@ -82,7 +82,7 @@ Ensure you have Composer, Docker and Docker Compose installed on your machine.
     ```
 11. **Run tests**:
     ```
-    docker exec -it <container_id_php> php artisan test
+    docker exec -it <container_id_php> php artisan test --testsuite=OrderedModels
     ```
 
 ## Suggestions and Support
