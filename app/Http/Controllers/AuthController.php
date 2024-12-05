@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Trait\AuthValidationTrait;
 use App\Models\User;
@@ -30,6 +29,7 @@ class AuthController extends Controller
     {
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
+        $data['role_id'] = 2;
 
         $user = User::create($data);
         $this->mailService->successMail($user->email, $user->name);
@@ -88,25 +88,6 @@ class AuthController extends Controller
             'status' => true,
             'message' => 'Password updated successfully',
         ], 200);
-    }
-
-    public function verifyEmail(Request $request)
-    {
-        $request->validate([
-            'token' => 'required|string',
-        ]);
-
-        $user = User::where('email_verification_token', $request->token)->first();
-
-        if (!$user) {
-            return response()->json(['error' => 'Token inválido'], 400);
-        }
-
-        $user->email_verified_at = now();
-        $user->email_verification_token = null;
-        $user->save();
-
-        return response()->json(['message' => 'Email successfully verified'], 200);
     }
 
     public function logout()
