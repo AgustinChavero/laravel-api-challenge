@@ -8,7 +8,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Traits\AuthValidationTrait;
+use App\Trait\AuthValidationTrait;
 
 class UserController extends Controller
 {
