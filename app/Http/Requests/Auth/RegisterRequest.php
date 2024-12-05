@@ -14,7 +14,6 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'role_id' => 'required|exists:roles,id',
             'language_id' => 'required|exists:languages,id',
             'name' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
