@@ -57,15 +57,6 @@ class AuthController extends Controller
 
     public function reset(ResetPasswordRequest $request)
     {
-        $user = $this->validateAuthenticatedUser();
-
-        if (is_string($user)) {
-            return response()->json([
-                'status' => false,
-                'message' => $user,
-            ], 404);
-        }
-
         $token = JWTAuth::fromUser($user);
         $this->mailService->sendResetPasswordMail($user->email, $user->name, $token);
 
