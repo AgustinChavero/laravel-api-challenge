@@ -18,7 +18,7 @@ return new class () extends Migration {
             $table->text('photo')->nullable();
 
             $table->text('content');
-            $table->date('publication_date');
+            $table->date('publication_date')->nullable();
             $table->boolean('enabled')->default(true);
 
             $table->timestamps();
