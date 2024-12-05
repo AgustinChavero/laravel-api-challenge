@@ -25,7 +25,7 @@ class PostController extends Controller
         }
 
         $user = $authResponse;
-        $followingIds = $user->following()->pluck('id');
+        $followingIds = $user->following()->pluck('users.id');
         $userPosts = Post::whereIn('user_id', $followingIds)
                     ->with(['user' => function ($query) {
                         $query->select('id', 'name', 'lastname');
