@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Trait\AuthValidationTrait;
+use App\Traits\AuthValidationTrait;
 use App\Http\Requests\Posts\StoreInteractionRequest;
 use App\Http\Requests\Posts\StorePostRequest;
 
