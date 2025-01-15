@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Hash;
-use App\Trait\AuthValidationTrait;
+use App\Traits\AuthValidationTrait;
 use App\Models\User;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\LoginRequest;
@@ -57,7 +57,17 @@ class AuthController extends Controller
 
     public function reset(ResetPasswordRequest $request)
     {
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json([
+                'status' => false,
+                'message' => 'User not found with the provided email',
+            ], 404);
+        }
+
         $token = JWTAuth::fromUser($user);
+
         $this->mailService->sendResetPasswordMail($user->email, $user->name, $token);
 
         return response()->json([
